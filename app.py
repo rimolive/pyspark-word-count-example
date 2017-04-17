@@ -12,8 +12,7 @@ if __name__ == "__main__":
         .appName("PythonWordCount")\
         .getOrCreate()
 
-	
-	textfile = spark.read.text( os.environ['SPARK_HOME'] + "/README.md")
+    textfile = spark.read.text(os.environ['SPARK_HOME'] + "/README.md")
 
     lines = textfile.rdd.map(lambda r: r[0])
     counts = lines.flatMap(lambda x: x.split(' ')) \
